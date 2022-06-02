@@ -98,7 +98,7 @@ for u in range(U):
     agent_ler.update_Q_t_to_Q()
 
     print("...    the Q-target is updated.")
-    # agent_ler.Q_t.save('./training-results/Q-target/trained-agents/last-agent')
+    agent_ler.Q_t.save('./training-results/Q-target/trained-agents/last-agent')
 
     print("...    the Q-target network is saved on the disk")
 

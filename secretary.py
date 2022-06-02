@@ -59,7 +59,7 @@ class secretary(gym.Env):
         return np.array(self.state)
 
     def backtrack_loss_function(self, score):
-        return 0.2*score
+        return 0.2 * score * score + 0.01 * np.random.uniform(-1, 1)
 
     def step(self, action):
         '''
@@ -97,7 +97,7 @@ class secretary(gym.Env):
             done = False
             info = {'msg': 'next candidate!'}
 
-        elif (action == 1 or self.time == self.N or (action == 2 and self.time == 0)):
+        elif (action == 1 or self.time == self.N):
             # the new state after this action
             self.state[0] = self.time / (self.N + 0.0)
 
@@ -106,7 +106,7 @@ class secretary(gym.Env):
             done = True
             info = {'msg': 'the current score is picked or we reached to the last candidate!'}
 
-        elif (action == 2 and self.time >= 1):
+        elif action == 2:
             # the new state after this action
             self.state[0] = self.time / (self.N + 0.0)
 
